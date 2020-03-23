@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hexo," />
+  <meta name="keywords" content="vue,前端技术," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="新建文章:  hexo n “title” (n是new的缩写)生成:  hexo g  (g是generate的缩写)启动预览: hexo s  (s是server的缩写)部署:  hexo d  (d是deploy的缩写)生成+部署连击: hexo d -g">
-<meta name="keywords" content="hexo">
+<meta name="description" content="安装cross-envnpm 安装cross-env package.json:“build-prod”: “cross-env NODE_ENV=production node build/build.js”,“build-test”: “cross-env NODE_ENV=testing node build/build.js”   build/webpack.prod.conf.js:/">
+<meta name="keywords" content="vue,前端技术">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo基础常用命令">
-<meta property="og:url" content="http://coderwu.cn/2020/02/15/hexo基础常用命令/index.html">
+<meta property="og:title" content="vue多环境打包配置">
+<meta property="og:url" content="http://coderwu.cn/2020/03/23/vue多环境打包配置/index.html">
 <meta property="og:site_name" content="小吴的黑科技工坊">
-<meta property="og:description" content="新建文章:  hexo n “title” (n是new的缩写)生成:  hexo g  (g是generate的缩写)启动预览: hexo s  (s是server的缩写)部署:  hexo d  (d是deploy的缩写)生成+部署连击: hexo d -g">
+<meta property="og:description" content="安装cross-envnpm 安装cross-env package.json:“build-prod”: “cross-env NODE_ENV=production node build/build.js”,“build-test”: “cross-env NODE_ENV=testing node build/build.js”   build/webpack.prod.conf.js:/">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-16T03:30:58.441Z">
+<meta property="og:updated_time" content="2020-03-23T09:14:54.893Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo基础常用命令">
-<meta name="twitter:description" content="新建文章:  hexo n “title” (n是new的缩写)生成:  hexo g  (g是generate的缩写)启动预览: hexo s  (s是server的缩写)部署:  hexo d  (d是deploy的缩写)生成+部署连击: hexo d -g">
+<meta name="twitter:title" content="vue多环境打包配置">
+<meta name="twitter:description" content="安装cross-envnpm 安装cross-env package.json:“build-prod”: “cross-env NODE_ENV=production node build/build.js”,“build-test”: “cross-env NODE_ENV=testing node build/build.js”   build/webpack.prod.conf.js:/">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://coderwu.cn/2020/02/15/hexo基础常用命令/"/>
+  <link rel="canonical" href="http://coderwu.cn/2020/03/23/vue多环境打包配置/"/>
 
 
 
 
 
-  <title>hexo基础常用命令 | 小吴的黑科技工坊</title>
+  <title>vue多环境打包配置 | 小吴的黑科技工坊</title>
   
 
 
@@ -291,7 +291,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://coderwu.cn/2020/02/15/hexo基础常用命令/">
+    <link itemprop="mainEntityOfPage" href="http://coderwu.cn/2020/03/23/vue多环境打包配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wu Jinlong">
@@ -308,7 +308,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hexo基础常用命令</h1>
+          <h1 class="post-title" itemprop="name headline">vue多环境打包配置</h1>
         
 
         <div class="post-meta">
@@ -320,8 +320,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-15T21:20:16+08:00">
-                2020-02-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-23T17:10:25+08:00">
+                2020-03-23
               </time>
             
 
@@ -358,9 +358,13 @@
       
 
       
-        <p>新建文章:  hexo n “title” (n是new的缩写)<br>生成:  hexo g  (g是generate的缩写)<br>启动预览: hexo s  (s是server的缩写)<br>部署:  hexo d  (d是deploy的缩写)<br>生成+部署连击: hexo d -g<br><a id="more"></a>  </p>
-<p>首页显示部分文章内容，增加“阅读全文”按钮跳转到全文方法:<br>   文章的摘要&lt;!–more–&gt; 以下是剩余内容。</p>
-<p>附上常用转义符:<br> &lt; &amp;lt;<br> &gt; &amp;gt;<br> &amp; &amp;amp</p>
+        <ol>
+<li>安装cross-env<br>npm 安装cross-env</li>
+<li>package.json:<br>“build-prod”: “cross-env NODE_ENV=production node build/build.js”,<br>“build-test”: “cross-env NODE_ENV=testing node build/build.js”  </li>
+<li>build/webpack.prod.conf.js:<br>// const env = process.env.NODE_ENV === ‘testing’<br>//   ? require(‘../config/test.env’)<br>//   : require(‘../config/prod.env’)<br>const env = config.build[process.env.NODE_ENV+’Env’]  </li>
+<li>config/index.js:<br>build: {<br>productionEnv: require(‘./prod.env’),<br>testingEnv: require(‘./test.env’),<br>developmentEnv: require(‘./dev.env’),  </li>
+<li>build/build.js:<br>// process.env.NODE_ENV = ‘production’.<br>使用方法：<br>在config/dev.env.js、prod.env.js、test.env.js下分别定义，如：WO_PLUS_API: ‘“<a href="http://aaa.bbb.ccc/aa&quot;&#39;,在vue使用时就直接写：process.env.WO_PLUS_API" target="_blank" rel="external">http://aaa.bbb.ccc/aa&quot;&#39;,在vue使用时就直接写：process.env.WO_PLUS_API</a></li>
+</ol>
 
       
     </div>
@@ -378,7 +382,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/vue/" rel="tag"># vue</a>
+          
+            <a href="/tags/前端技术/" rel="tag"># 前端技术</a>
           
         </div>
       
@@ -391,8 +397,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/02/13/vue调用本地HTML页面/" rel="next" title="vue调用本地HTML页面">
-                <i class="fa fa-chevron-left"></i> vue调用本地HTML页面
+              <a href="/2020/03/12/vue好用组件推荐/" rel="next" title="vue好用组件推荐">
+                <i class="fa fa-chevron-left"></i> vue好用组件推荐
               </a>
             
           </div>
@@ -400,10 +406,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/02/18/vue工程跨域解决方案/" rel="prev" title="vue工程跨域解决方案">
-                vue工程跨域解决方案 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
